@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#board {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(7, 100px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.column, .foundation, .stock {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 150px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px dashed #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8f8f8;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 90px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 140px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#foundation-area, #stock-area {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Klondike Solitaire Drag &amp; Drop&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="file" id="fileInput" accept="image/*"&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Columns&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="board"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Foundation&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="foundation-area"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="foundation" id="foundation1"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="foundation" id="foundation2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="foundation" id="foundation3"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="foundation" id="foundation4"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Stock&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="stock-area"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="stock" id="stock"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="generateBoard()"&gt;Generate Board Data&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;pre id="output"&gt;&lt;/pre&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let draggedCard = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('dragstart', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>draggedCard = e.target;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>e.dataTransfer.setData('text/plain', draggedCard.id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('dragover', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('drop', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const target = e.target;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (target.classList.contains('column') || target.classList.contains('foundation') || target.classList.contains('stock')) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>target.appendChild(draggedCard);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>draggedCard.style.position = 'static';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function generateCard(cardId, column) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const card = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>card.className = 'card';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>card.id = cardId;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>card.draggable = true;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>card.innerText = cardId;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(column).appendChild(card);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function generateInitialBoard() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const board = document.getElementById('board');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 1; i &lt;= 7; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const column = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>column.className = 'column';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>column.id = `column${i}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>column.ondrop = (e) =&gt; e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>board.appendChild(column);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function generateBoard() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const columns = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 1; i &lt;= 7; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const columnCards = Array.from(document.getElementById(`column${i}`).children)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>.map(card =&gt; card.innerText);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>columns.push(columnCards);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const foundation = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 1; i &lt;= 4; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const card = document.getElementById(`foundation${i}`).innerText || '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>foundation.push(card);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const stock = Array.from(document.getElementById('stock').children)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>.map(card =&gt; card.innerText);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const boardData = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>tableau: columns,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>foundation: foundation,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>stock: stock</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('output').innerText = JSON.stringify(boardData, null, 2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize columns</p>
+<p class="p1"><span class="Apple-converted-space">        </span>generateInitialBoard();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
